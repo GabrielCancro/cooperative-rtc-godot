@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/Game/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Game.gd" type="Script" id=2]
+[ext_resource path="res://assets/Adventure.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/Game/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/EnemySpawner.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 3 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 600.0
+margin_bottom = 600.0
+color = Color( 0.321569, 0.321569, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 396.903, 191.724 )
+
+[node name="Player2" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.941176, 1, 0.262745, 1 )
+position = Vector2( 110.998, 221.996 )
+
+[node name="Info" type="Label" parent="."]
+margin_right = 600.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 1 )
+text = "Info"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 218.035, 153.852 )
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource( 5 )
